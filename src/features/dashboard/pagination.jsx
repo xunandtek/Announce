@@ -6,6 +6,7 @@ import {
   Typography,
   CardActionArea,
   Pagination,
+  Link,
   Box
 } from "@mui/material";
 import { useState } from "react";
@@ -28,7 +29,7 @@ const ArticleViewer = ({ data }) => {
     setPage(number);
   }
 
-  const count = Math.round(data.length / 2);
+  const count = Math.round(data.length / 4);
 
   return (
     <Centered gap={2} justifyContent='center'>
@@ -36,10 +37,16 @@ const ArticleViewer = ({ data }) => {
         <Card sx={{ width: 400 }}>
           <CardActionArea>
             <CardMedia sx={{ height: 250 }} image={prev.urlToImage} />
+            <Link href={prev.url} underline="none">
+  {"Source"}
+</Link>
           </CardActionArea>
           <CardContent>
             <Typography variant="h5" gutterBottom>
               {prev.source.name}
+            </Typography>
+            <Typography variant="h7">
+              {prev.publishedAt}
             </Typography>
             <Typography variant="h6" color="GrayText">
               {prev.title}
@@ -49,11 +56,18 @@ const ArticleViewer = ({ data }) => {
 
         <Card sx={{ width: 400, minHeight: 430 }}>
           <CardActionArea>
+          <Link href={prev.url} underline="none">
             <CardMedia sx={{ height: 250 }} image={next.urlToImage} />
+            
+
+</Link>
           </CardActionArea>
           <CardContent>
             <Typography variant="h5" gutterBottom>
               {next.source.name}
+            </Typography>
+            <Typography variant="h7">
+              {next.publishedAt}
             </Typography>
             <Typography variant="h6" color="GrayText">
               {next.title}
